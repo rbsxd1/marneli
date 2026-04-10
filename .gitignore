@@ -1,0 +1,11 @@
+# Archivos temporales de Kate
+*.kate-swp
+.*.kate-swp
+
+# Archivos de configuración de sistema
+.DS_Store
+Thumbs.db
+
+# Otros temporales comunes
+*.tmp
+*.log
