@@ -81,3 +81,16 @@ button:hover {
     font-size: 0.9em;
     border: 1px solid #BDB2FF;
 }
+
+.logo-sistema {
+    max-width: 180px; /* Ajusta el tamaño según te guste */
+    height: auto;
+    display: block;
+    margin: 0 auto 20px auto;
+    filter: drop-shadow(2px 4px 6px rgba(189, 178, 255, 0.3)); /* Sombra color lavanda */
+    transition: transform 0.3s ease;
+}
+
+.logo-sistema:hover {
+    transform: scale(1.05); /* Un pequeño efecto al pasar el mouse */
+}

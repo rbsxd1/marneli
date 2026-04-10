@@ -13,22 +13,24 @@
 </div>
 <?php endif; ?>
 <div class="contenedor-sistema">
+<div style="text-align: center; margin-top: 20px;">
+<img src="img/marneli.png" alt="Logo Marneli" style="max-width: 150px; height: auto; drop-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+</div>
     <h2>🌸 Registro de Pagos 🌸</h2>
     <p style="text-align: center;">Bienvenida, <strong>Srta. Marne</strong></p>
 
     <form action="guardar_pago.php" method="POST">
-        <label>Número de Referencia:</label>
-        <label for="referencia"></label>
-        <input
-        type="text"
-        name="referencia"
-        id="referencia"
-        class="input-pastel"
-        placeholder="Ej: 123456"
-        oninput="this.value = this.value.replace(/[^0-9]/g, '');"
-        required
-        >
-
+    <label for="referencia">Número de Referencia (Máx. 12 dígitos):</label>
+    <input
+    type="text"
+    name="referencia"
+    id="referencia"
+    class="input-pastel"
+    placeholder="Ej: 00123456"
+    maxlength="12"
+    oninput="this.value = this.value.replace(/[^0-9]/g, '');"
+    required
+    >
         <select name="banco_emisor" id="banco_emisor" class="select-pastel" required>
         <option value="" disabled selected>Selecciona un banco...</option>
         <?php
