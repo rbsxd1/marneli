@@ -7,35 +7,40 @@ body {
     color: #5E548E;
     display: flex;
     justify-content: center;
-    padding: 50px;
+    padding: 20px; /* Reducido para mejor ajuste en móviles */
+    margin: 0;
 }
 
-.contenedor-sistema {
+/* Contenedor principal para index.php y ver_pagos.php */
+.main-container {
     background: white;
     border: 3px solid #FFC8DD; /* Borde rosa pastel */
     border-radius: 30px;
     padding: 30px;
     box-shadow: 10px 10px 0px #FFD1DC; /* Sombra sólida tipo sticker */
-    width: 400px;
+    width: 100%;
+    max-width: 900px; /* Aumentado para que el historial tenga espacio */
 }
 
-h2 {
+h1, h2 {
     color: #FF94AD;
     text-align: center;
-    font-size: 1.5rem;
 }
 
-input, select {
+/* Estilos de inputs y botones existentes */
+input, select, .input-pastel {
     width: 100%;
     padding: 12px;
     margin: 10px 0;
     border: 2px solid #BDB2FF;
-    border-radius: 15px; /* Bordes suaves */
+    border-radius: 15px;
     outline: none;
+    font-family: 'Quicksand', sans-serif;
+    box-sizing: border-box; /* Crucial para que el padding no rompa el ancho */
 }
 
-button {
-    background-color: #BDB2FF; /* Color lavanda */
+button, .btn-primario {
+    background-color: #BDB2FF;
     color: white;
     border: none;
     padding: 15px;
@@ -46,68 +51,73 @@ button {
     transition: transform 0.2s;
 }
 
-button:hover {
-    transform: scale(1.05);
+button:hover { transform: scale(1.05); }
+
+/* --- NUEVAS REGLAS PARA EL HISTORIAL ORDENADO --- */
+
+.grid-pagos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
 }
-.select-pastel {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    border: 2px solid #FFC8DD; /* El rosa de los tulipanes de Pochacco */
-    border-radius: 20px;
+
+.tarjeta-pago {
     background-color: #ffffff;
-    font-family: 'Quicksand', sans-serif;
-    color: #5E548E;
-    appearance: none; /* Quita la flecha por defecto en algunos navegadores */
-    background-image: url('data:image/svg+xml;charset=US-ASCII,<svg%20xmlns="http://www.w3.org/2000/svg"%20width="20"%20height="20"%20viewBox="0%200%2020%2020"><path%20fill="%23FFC8DD"%20d="M7%207l3%203%203-3z"/></svg>'); /* Flechita personalizada rosa */
-    background-repeat: no-repeat;
-    background-position: right 15px center;
-    cursor: pointer;
+    border-left: 8px solid #BDB2FF;
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+    border: 1px solid #eee;
 }
 
-.select-pastel:focus {
-    border-color: #BDB2FF; /* Cambia a lavanda al hacer clic */
-    outline: none;
-    box-shadow: 0 0 8px #FFD1DC;
-}
-
-.btn-secundario {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #E2ECE9;
-    color: #6D6875;
-    text-decoration: none;
+.total-box {
+    background-color: #BDB2FF;
+    color: white;
+    padding: 20px;
     border-radius: 20px;
-    font-size: 0.9em;
-    border: 1px solid #BDB2FF;
+    text-align: center;
+    margin: 0 auto 30px auto;
+    max-width: 400px;
+    box-shadow: 0 4px 15px rgba(189, 178, 255, 0.4);
+}
+
+.banco-tag {
+    background: #FFC8DD;
+    padding: 3px 10px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 0.85em;
+    display: inline-block;
 }
 
 .logo-sistema {
-    max-width: 180px; /* Ajusta el tamaño según te guste */
+    max-width: 180px;
     height: auto;
     display: block;
     margin: 0 auto 20px auto;
-    filter: drop-shadow(2px 4px 6px rgba(189, 178, 255, 0.3)); /* Sombra color lavanda */
-    transition: transform 0.3s ease;
+    filter: drop-shadow(2px 4px 6px rgba(189, 178, 255, 0.3));
 }
 
-.logo-sistema:hover {
-    transform: scale(1.05); /* Un pequeño efecto al pasar el mouse */
-}
-/* Esto se activa solo en teléfonos */
+/* --- AJUSTES PARA TELÉFONOS --- */
 @media (max-width: 600px) {
+    body { padding: 10px; }
+
     .main-container {
-        width: 95%;
-        margin: 10px auto;
         padding: 15px;
+        border-radius: 20px;
     }
 
-    .input-pastel, .select-pastel {
-        font-size: 16px; /* Evita que el iPhone/Android haga zoom automático */
-        padding: 15px; /* Botones más grandes para los dedos */
+    .grid-pagos {
+        grid-template-columns: 1fr; /* Una sola columna en móvil */
     }
 
-    .logo-sistema {
-        max-width: 120px;
+    .total-box {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    input, .input-pastel {
+        font-size: 16px; /* Evita zoom automático en iPhone/Android */
     }
 }
