@@ -49,3 +49,35 @@ button {
 button:hover {
     transform: scale(1.05);
 }
+.select-pastel {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 2px solid #FFC8DD; /* El rosa de los tulipanes de Pochacco */
+    border-radius: 20px;
+    background-color: #ffffff;
+    font-family: 'Quicksand', sans-serif;
+    color: #5E548E;
+    appearance: none; /* Quita la flecha por defecto en algunos navegadores */
+    background-image: url('data:image/svg+xml;charset=US-ASCII,<svg%20xmlns="http://www.w3.org/2000/svg"%20width="20"%20height="20"%20viewBox="0%200%2020%2020"><path%20fill="%23FFC8DD"%20d="M7%207l3%203%203-3z"/></svg>'); /* Flechita personalizada rosa */
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    cursor: pointer;
+}
+
+.select-pastel:focus {
+    border-color: #BDB2FF; /* Cambia a lavanda al hacer clic */
+    outline: none;
+    box-shadow: 0 0 8px #FFD1DC;
+}
+
+.btn-secundario {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #E2ECE9;
+    color: #6D6875;
+    text-decoration: none;
+    border-radius: 20px;
+    font-size: 0.9em;
+    border: 1px solid #BDB2FF;
+}

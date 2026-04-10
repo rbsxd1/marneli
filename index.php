@@ -43,6 +43,8 @@
         <button type="submit">Registrar Pago ✨</button>
     </form>
 </div>
-
+<div style="margin-top: 30px; text-align: center;">
+<a href="ver_pagos.php" class="btn-secundario">Ver todos los pagos realizados</a>
+</div>
 </body>
 </html>
