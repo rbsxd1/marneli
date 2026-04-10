@@ -19,7 +19,8 @@ if (mysqli_num_rows($resultado) > 0) {
         echo '<p>👤 <b>Emisor:</b> ' . htmlspecialchars($pago['emisor']) . '</p>';
         echo '<p>💰 <b>Monto:</b> ' . number_format($pago['monto'], 2) . ' Bs.</p>';
         echo '<p><span class="banco-tag">' . htmlspecialchars($pago['banco_emisor']) . '</span></p>';
-        echo '<p>📅 Fecha: ' . $pago['fecha_pago'] . '</p>';
+        // Busca esta línea en tu archivo ver_pagos.php y cámbiala:
+        echo '<p>📅 <b>Fecha/Hora:</b> ' . date("d/m/Y h:i A", strtotime($pago['registro_at'])) . '</p>';
         echo '</div>';
     }
 } else {
