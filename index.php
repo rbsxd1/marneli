@@ -23,7 +23,7 @@
     <form action="guardar_pago.php" method="POST">
     <label for="referencia">Número de Referencia (Máx. 12 dígitos):</label>
     <input
-    type="text"
+    type="number"
     name="referencia"
     id="referencia"
     class="input-pastel"
