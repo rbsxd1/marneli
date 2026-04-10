@@ -94,3 +94,20 @@ button:hover {
 .logo-sistema:hover {
     transform: scale(1.05); /* Un pequeño efecto al pasar el mouse */
 }
+/* Esto se activa solo en teléfonos */
+@media (max-width: 600px) {
+    .main-container {
+        width: 95%;
+        margin: 10px auto;
+        padding: 15px;
+    }
+
+    .input-pastel, .select-pastel {
+        font-size: 16px; /* Evita que el iPhone/Android haga zoom automático */
+        padding: 15px; /* Botones más grandes para los dedos */
+    }
+
+    .logo-sistema {
+        max-width: 120px;
+    }
+}

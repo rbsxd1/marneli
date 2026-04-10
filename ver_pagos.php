@@ -3,6 +3,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
     <title>Pagos Registrados - Marneli</title>
     <link rel="stylesheet" href="ccs/estilito.css">
@@ -32,6 +33,35 @@
             border-radius: 10px;
             font-weight: bold;
         }
+    </style>
+    <style>
+    /* Ajustes específicos para móviles */
+    @media (max-width: 600px) {
+        .contenedor-tarjetas {
+            grid-template-columns: 1fr; /* Una tarjeta por fila */
+            padding: 10px; /* Menos margen lateral */
+        }
+
+        .main-container h1 {
+            font-size: 1.5em; /* Título un poco más pequeño */
+        }
+
+        /* Ajuste crucial para el bloque morado del Total */
+        div[style*="background-color: #BDB2FF;"] {
+            position: relative; /* Asegura que no flote de forma extraña */
+            float: none; /* Si tenía float, lo quitamos */
+            width: 90% !important; /* Que use casi todo el ancho */
+            margin: 10px auto 20px auto !important; /* Espacio uniforme */
+            display: block; /* Que ocupe su propia línea */
+        }
+
+        /* Ajuste para que las tarjetas no sean tan anchas */
+        .tarjeta-pago {
+            width: 100%;
+            max-width: none;
+            box-sizing: border-box; /* Incluye padding en el ancho */
+        }
+    }
     </style>
 </head>
 <?php
