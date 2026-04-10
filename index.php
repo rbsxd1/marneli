@@ -18,7 +18,16 @@
 
     <form action="guardar_pago.php" method="POST">
         <label>Número de Referencia:</label>
-        <input type="text" name="referencia" placeholder="Ej: 00123456" required>
+        <label for="referencia"></label>
+        <input
+        type="text"
+        name="referencia"
+        id="referencia"
+        class="input-pastel"
+        placeholder="Ej: 123456"
+        oninput="this.value = this.value.replace(/[^0-9]/g, '');"
+        required
+        >
 
         <select name="banco_emisor" id="banco_emisor" class="select-pastel" required>
         <option value="" disabled selected>Selecciona un banco...</option>
@@ -36,15 +45,21 @@
         }
         ?>
         </select>
+        <label for="emisor">Nombre del Emisor:</label>
+        <input type="text" name="emisor" id="emisor" class="input-pastel" placeholder="Ej: Juan Pérez" required>
+
+        <label for="monto">Monto del Pago:</label>
+        <input type="number" step="0.01" name="monto" id="monto" class="input-pastel" placeholder="0.00" required>
 
         <label>Fecha del Pago:</label>
         <input type="date" name="fecha_pago" required>
 
         <button type="submit">Registrar Pago ✨</button>
+            <div style="margin-top: 30px; text-align: center;">
+            <a href="ver_pagos.php" class="btn-secundario">Ver todos los pagos realizados</a>
+            </div>
     </form>
 </div>
-<div style="margin-top: 30px; text-align: center;">
-<a href="ver_pagos.php" class="btn-secundario">Ver todos los pagos realizados</a>
-</div>
+
 </body>
 </html>

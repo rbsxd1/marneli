@@ -34,6 +34,20 @@
         }
     </style>
 </head>
+<?php
+// Consulta para sumar todos los montos
+$query_total = "SELECT SUM(monto) as total_general FROM pagos";
+$res_total = mysqli_query($conexion, $query_total);
+$fila_total = mysqli_fetch_assoc($res_total);
+$total = $fila_total['total_general'];
+?>
+
+<div style="background-color: #BDB2FF; color: white; padding: 20px; border-radius: 20px; text-align: center; margin: 20px auto; max-width: 400px; box-shadow: 0 4px 15px rgba(189, 178, 255, 0.4);">
+<h2 style="margin: 0;">💰 Total Recaudado</h2>
+<p style="font-size: 2em; font-weight: bold; margin: 10px 0;">
+<?php echo number_format($total, 2); ?> Bs.
+</p>
+</div>
 <body>
     <div class="main-container">
         <h1 style="text-align: center;">🌸 Historial de Pagos 🌸</h1>
@@ -49,6 +63,8 @@
             while($pago = mysqli_fetch_assoc($resultado)) {
                 echo '<div class="tarjeta-pago">';
                 echo '<h3>Ref: ' . htmlspecialchars($pago['referencia']) . '</h3>';
+                echo '<p>👤 <b>Emisor:</b> ' . htmlspecialchars($pago['emisor']) . '</p>';
+                echo '<p>💰 <b>Monto:</b> ' . number_format($pago['monto'], 2) . ' Bs.</p>';
                 echo '<p><span class="banco-tag">' . htmlspecialchars($pago['banco_emisor']) . '</span></p>';
                 echo '<p>📅 Fecha: ' . $pago['fecha_pago'] . '</p>';
                 echo '</div>';

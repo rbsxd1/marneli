@@ -3,22 +3,23 @@ include('conexion.php');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $referencia = $_POST['referencia'];
-    $banco      = $_POST['banco_emisor'];
+
+    // Validar que solo sean números
+    if (!ctype_digit($referencia)) {
+        die("Error: La referencia debe contener solo números.");
+    }
+    $banco      = mysqli_real_escape_string($conexion, $_POST['banco_emisor']);
     $fecha      = $_POST['fecha_pago'];
+    $monto      = $_POST['monto']; // Nuevo
+    $emisor     = mysqli_real_escape_string($conexion, $_POST['emisor']); // Nuevo
 
-    // Limpiar datos para evitar inyecciones básicas
-    $referencia = mysqli_real_escape_string($conexion, $referencia);
-    $banco      = mysqli_real_escape_string($conexion, $banco);
-
-    $sql = "INSERT INTO pagos (referencia, banco_emisor, fecha_pago)
-            VALUES ('$referencia', '$banco', '$fecha')";
+    $sql = "INSERT INTO pagos (referencia, banco_emisor, monto, emisor, fecha_pago)
+    VALUES ('$referencia', '$banco', '$monto', '$emisor', '$fecha')";
 
     if (mysqli_query($conexion, $sql)) {
-        // Redirigir con un mensaje de éxito
         header("Location: index.php?status=success");
     } else {
-        echo "Error: " . $sql . "<br>" . mysqli_error($conexion);
+        echo "Error: " . mysqli_error($conexion);
     }
 }
-mysqli_close($conexion);
 ?>
