@@ -7,7 +7,11 @@
     <link rel="stylesheet" href="ccs/estilito.css">
 </head>
 <body>
-
+<?php if(isset($_GET['status']) && $_GET['status'] == 'success'): ?>
+<div style="background-color: #D8E2DC; color: #6D6875; padding: 10px; border-radius: 15px; text-align: center; margin-bottom: 20px; border: 1px solid #BDB2FF;">
+✨ ¡Pago registrado con éxito, Srta. Marne! ✨
+</div>
+<?php endif; ?>
 <div class="contenedor-sistema">
     <h2>🌸 Registro de Pagos 🌸</h2>
     <p style="text-align: center;">Bienvenida, <strong>Srta. Marne</strong></p>
@@ -16,11 +20,21 @@
         <label>Número de Referencia:</label>
         <input type="text" name="referencia" placeholder="Ej: 00123456" required>
 
-        <label>Banco Emisor:</label>
-        <select name="banco_emisor">
-            <option value="Banco 1">Banco 1</option>
-            <option value="Banco 2">Banco 2</option>
-            <option value="Otro">Otro</option>
+        <select name="banco_emisor" id="banco_emisor" class="select-pastel" required>
+        <option value="" disabled selected>Selecciona un banco...</option>
+        <?php
+        $archivo = 'bancos.csv';
+        if (file_exists($archivo)) {
+            $gestor = fopen($archivo, "r");
+            while (($datos = fgetcsv($gestor, 1000, ",")) !== FALSE) {
+                $nombre = trim($datos[0]);
+                $codigo = trim($datos[1]);
+                // Mostramos "Nombre - Código" en el menú, pero guardamos solo el nombre (o lo que prefieras)
+                echo "<option value='$nombre'>$nombre - $codigo</option>";
+            }
+            fclose($gestor);
+        }
+        ?>
         </select>
 
         <label>Fecha del Pago:</label>
